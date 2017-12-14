@@ -34,3 +34,38 @@ int main(int argc, char *argv[])
     return app.exec();
 }
 ```
+
+## Laying out widgets
+
+Qt의 `layout`은 window 안에서 widget들의 위치 관계(`geometry`)를 관리한다. 수평과 수직 구성을 위한 `QHBoxLayout`과 `QVBoxLayout`, 그리고 격자 구성을 위한 `QGridLayout`이 있다. 또한 아래 예제에서는 signal과 slot을 이용해서 2개의 widget간 데이터를 동기화시키는 방법이 사용되고 있다.
+
+```cc
+#include <QApplication>
+#include <QHBoxLayout>
+#include <QSlider>
+#include <QSpinBox>
+
+int main(int argc, char *argv[])
+{
+    QApplication app(argc, argv);
+    QWidget* window = new QWidget;
+    QHBoxLayout* layout = new QHBoxLayout;
+    QSpinBox* spinbox = new QSpinBox;
+    QSlider* slider = new QSlider(Qt::Horizontal);
+
+    window->setWindowTitle("Enter your age");
+    window->setLayout(layout);
+    layout->addWidget(spinbox);
+    layout->addWidget(slider);
+    spinbox->setRange(0, 130);
+    slider->setRange(0, 130);
+
+    QObject::connect(spinbox, SIGNAL(valueChanged(int)), slider, SLOT(setValue(int)));
+    QObject::connect(slider, SIGNAL(valueChanged(int)), spinbox, SLOT(setValue(int)));
+
+    spinbox->setValue(35);
+
+    window->show();
+    return app.exec();
+}
+```
