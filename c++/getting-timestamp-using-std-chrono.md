@@ -88,9 +88,9 @@ int main() {
 }
 ```
 
-> 1 hour = 3600 seconds = 3600000 milliseconds = 3600000000 microseconds
-> 1516373058784794000
-> 2018-01-19 23:44:18
-> 2018-01-19 23:44:18.786704
+> 1 hour = 3600 seconds = 3600000 milliseconds = 3600000000 microseconds  
+> 1516373058784794000  
+> 2018-01-19 23:44:18  
+> 2018-01-19 23:44:18.786704  
 
 [Getting timestamp using std::chrono]:https://github.com/seungin/cpp/blob/master/getting_timestamp_using_chrono/main.cpp
