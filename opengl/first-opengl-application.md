@@ -51,7 +51,7 @@ void main(void)
 }
 ```
 
-shader가 준비되었으면 이제 컴파일하고 OpenGL에서 실행딜 수 있게 program으로 링크시킬 차례다.  
+shader가 준비되었으면 이제 컴파일하고 OpenGL에서 실행될 수 있게 program으로 링크시킬 차례다.
 - glCreateShader() : 빈 shader object를 생성
 - glShaderSource() : shader 소스 코드를 shader object로 전달해서 복사본을 유지
 - glCompileShader() : shader object에 포함된 소스 코드를 컴파일
@@ -59,17 +59,6 @@ shader가 준비되었으면 이제 컴파일하고 OpenGL에서 실행딜 수 �
 - glAttachShader() : shader object를 program object에 부착
 - glLinkProgram() : program object에 부착된 모든 shader object를 링크
 - glDeleteShader() : shader object를 삭제, 링크가 완료되면 program이 바이너리 코드를 보관하여 shader는 더 이상 필요 없게 됨
-
-화면에 그리기 전에 마지막으로 할 일은 `VAO`(Vertex Array Object)를 생성하는 것이다. 이는 OpenGL 파이프라인에서 `Vertex Fetch` 스테이지를 나타내는 객체로써 입력을 vertex shader에 공급하기 위해 사용된다. 여기 예제에서는 vertex shader가 지금은 입력을 가지고 있지 않으므로 VAO에 대해 할 일은 없다. 하지만 OpenGL이 그릴 때 사용할 수 있도록 VAO를 생성해 주기는 해야 한다. VAO를 생성하는 방법은 아래 두 함수를 호출하는 것이다.
-- glGenVertexArrays()
-- glBindVertexArray()
-
-program이 준비되었으면 사용하면 된다.
-- glUseProgram() : OpenGL에 해당 program object를 사용하여 rendering 시킴
-- glDrawArrays() : 인자로 주어진 primitive 타입에 따라 실제 화면에 그림
-  - GL_POINTS : 점
-  - GL_LINES : 선
-  - GL_TRIANGLES : 삼각형
 
 ```cpp
 GLuint first_app::compile_shaders()
@@ -99,6 +88,39 @@ GLuint first_app::compile_shaders()
     glDeleteShader(fragment_shader);
 
     return program;
+}
+```
+
+화면에 그리기 전에 마지막으로 할 일은 `VAO`(Vertex Array Object)를 생성하는 것이다. 이는 OpenGL 파이프라인에서 `Vertex Fetch` 스테이지를 나타내는 객체로써 입력을 vertex shader에 공급하기 위해 사용된다. 여기 예제에서는 vertex shader가 지금은 입력을 가지고 있지 않으므로 VAO에 대해 할 일은 없다. 하지만 OpenGL이 그릴 때 사용할 수 있도록 VAO를 생성해 주기는 해야 한다. VAO를 생성하는 방법은 아래 두 함수를 호출하는 것이다.
+- glGenVertexArrays()
+- glBindVertexArray()
+
+```cpp
+void first_app::startup()
+{
+    rendering_program = compile_shaders();
+    glGenVertexArrays(1, &vertex_array_object);
+    glBindVertexArray(vertex_array_object);
+}
+```
+
+program이 준비되었으면 사용하면 된다.
+- glUseProgram() : OpenGL에 해당 program object를 사용하여 rendering 시킴
+- glDrawArrays() : 인자로 주어진 primitive 타입에 따라 실제 화면에 그림
+  - GL_POINTS : 점
+  - GL_LINES : 선
+  - GL_TRIANGLES : 삼각형
+
+```cpp
+void first_app::render(double currentTime)
+{
+    ...
+
+    // Use a program for rendering
+    glUseProgram(rendering_program);
+
+    // Draw a vertex
+    glDrawArrays(GL_TRIANGLES, 0, 3);
 }
 ```
 
