@@ -4,7 +4,7 @@ OpenGL을 제대로 활용하기 위해서는 파이프라인과 관련된 지�
 
 ## Vertex shader
 
-`Vertex shader`는 OpenGL 파이프라인의 첫번째 프로그래밍 가능 stage이며 유일한 필수 stage이다. 하지만 그 전에 `Vertex fetching` 또는 `Vertex pooling` 이라는 고정 함수 stage가 실행될 수 있는데, 이 작업은 Vertex shader에 입력을 제공하는 일을 수행한다. 제공된 입력은 Vertex shader의 `in` 키워드로 선언되는 `Vertex attribute`에 자동으로 채워진다.  
+`Vertex shader`는 OpenGL 파이프라인의 첫번째 프로그래밍 가능 stage이며 유일한 필수 stage이다. 하지만 그 전에 `Vertex fetching` 또는 `Vertex pooling` 이라는 고정 함수 stage가 실행될 수 있는데, 이 작업은 Vertex shader에 입력을 제공하는 일을 수행한다. 제공된 입력은 Vertex shader의 in 키워드로 선언되는 `Vertex attribute`에 자동으로 채워진다.  
 
 glVertexAttrib4fv() 함수의 첫번째 인자 값과 동일한 location 값을 가지는 Vertex attribute에 그 값이 자동으로 채워진다.  
 
@@ -44,7 +44,7 @@ void main() {
 
 ## Tessellation
 
-`Tessellation`, 번역하면 `조각화` 라는 뜻으로 고차 primitive를 더 작고 단순한 여러 개의 렌더링 가능한 primitive, 예를 들면 삼각형과 같은 것으로 분할하는 작업이다. Tessellation 단계는 Vertex shading stage 바로 다음에 위치하며, `Tessellation control shader`, `Tessellation engine`, `Tessellation evaluation shader`의 세 부분으로 구성된다. 각각에 대한 상세한 내용은 추후 다루도록 하자.  
+`Tessellation`, 번역하면 조각화라는 뜻으로 고차 primitive를 더 작고 단순한 여러 개의 렌더링 가능한 primitive, 예를 들면 삼각형과 같은 것으로 분할하는 작업이다. Tessellation 단계는 Vertex shading stage 바로 다음에 위치하며, `Tessellation control shader`, `Tessellation engine`, `Tessellation evaluation shader`의 세 부분으로 구성된다. 각각에 대한 상세한 내용은 추후 다루도록 하자.  
 
 ## Geometry shader
 
