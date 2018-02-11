@@ -3,8 +3,8 @@
 여기서는 Qt Installer Framework를 사용하여 설치 파일을 만드는 가장 단순한 예제를 설명한다.  
 
 작성하며 참고했던 링크들을 추가해둔다.  
-[Tutorial: Creating an Installer](http://doc.qt.io/qtinstallerframework/ifw-tutorial.html)
-[Qt Installer Framework 를 이용한 Installer 만들기](https://www.qtocube.co.kr/qt-forum/bbs/board.php?bo_table=tip&wr_id=37)
+- [Tutorial: Creating an Installer](http://doc.qt.io/qtinstallerframework/ifw-tutorial.html)
+- [Qt Installer Framework 를 이용한 Installer 만들기](https://www.qtocube.co.kr/qt-forum/bbs/board.php?bo_table=tip&wr_id=37)
 
 
 ## Get the Qt Installer Framework
