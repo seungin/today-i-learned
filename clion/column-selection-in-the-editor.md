@@ -1,6 +1,6 @@
 # Column selection in the editor
 
-CLion에서 Column Selection을 위해서 3가지 정도 방법이 있다. documentation을 googling하여 찾아보면 바로 나오기는 하는데 나중에 찾아보기 쉽도록 여기에 정리해둔다.
+CLion에서 Column Selection을 위해서 4가지 정도 방법이 있다. documentation을 googling하여 찾아보면 바로 나오기는 하는데 나중에 찾아보기 쉽도록 여기에 정리해둔다.
 
 [Selecting text in the editor]
 
