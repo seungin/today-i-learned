@@ -59,4 +59,4 @@ template<typename T> void print()
 }
 ```
 
-[typename keyword]:(https://github.com/seungin/TIL/blob/master/c%2B%2B/typename-keyword.md)
+[typename keyword]:https://github.com/seungin/TIL/blob/master/c%2B%2B/typename-keyword.md
