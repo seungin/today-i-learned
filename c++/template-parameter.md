@@ -1,3 +1,14 @@
 # Template parameter
 
 템플릿 파라미터로 사용될 수 있는 것들에는 어떤 것들이 있는지 알아보도록 하자. 크게 3가지로 분류될 수 있는데 `타입`이나 `값(nontype)`, 그리고 `템플릿`을 받을 수 있다. 각각에 대해서 상세히 알아보기로 하자.
+
+## Type
+T.B.D
+
+## Value (Nontype)
+[nontype template parameter]
+
+## Template
+T.B.D
+
+[nontype template parameter]:https://github.com/seungin/TIL/blob/master/c%2B%2B/nontype-template-parameter.md
