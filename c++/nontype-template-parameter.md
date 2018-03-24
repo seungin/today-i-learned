@@ -5,7 +5,58 @@
 [template parameter]
 
 ```cpp
+// 1. 정수형 상수
+template<int N> class Array {};
 
+int main() {
+    Array<10> array;
+}
+```
+
+```cpp
+// 2. enum 상수
+enum Color { red, green, blue };
+template<Color> class Font {};
+
+int main() {
+    Font<red> font;
+}
+```
+
+```cpp
+// 3. 포인터
+template<int*> class Address {};
+int g_var;
+
+int main() {
+    Address<&g_var> address;
+}
+```
+
+```cpp
+// 4. 함수 포인터
+template<void(*)(const char*)> class Delegate {};
+void hello(const char* name) { std::cout << name << '\n'; }
+
+int main() {
+    Delegate<hello> delegate;
+}
+```
+
+```cpp
+// 5. auto
+template<auto T> struct Type
+{
+    Type() { std::cout << typeid(T).name() << '\n'; }
+};
+
+int main() {
+    // since C++17
+    Type<10> intType;
+    Type<&g_var> ptrType;
+    Type<&main> funcType;
+    return 0;
+}
 ```
 
 [template parameter]:https://github.com/seungin/TIL/blob/master/c%2B%2B/template-parameter.md
