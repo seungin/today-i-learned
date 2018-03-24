@@ -1,6 +1,10 @@
 # Template template parameter
 
-템플릿 파라미터로 템플릿이 사용될 수도 있다. 사실 이 방법은 매우 많이 사용되는 방식인데, 이에 대한 사용법을 보도록 하자. 아래는 간단한 List 클래스를 템플릿으로 구현한 것이다.
+템플릿 파라미터로 템플릿이 사용될 수도 있다. 사실 이 방법은 매우 많이 사용되는 방식인데, 이에 대한 사용법을 보도록 하자. (다른 템플릿 파라미터를 보고 싶으면 아래 링크를 참고하라)
+
+[template parameter]
+
+아래는 간단한 List 클래스를 템플릿으로 구현한 것이다.
 
 ```cpp
 template<typename T> class List {};
@@ -31,3 +35,5 @@ template<typename> class Container
 ```
 
 다만 템플릿 인자로 하나만 받는다는 의미에서 `template<typename>` 이라고 써 주고 클래스 템플릿이므로 `class Container` 라고 써 주는 것이다.
+
+[template parameter]:https://github.com/seungin/TIL/blob/master/c%2B%2B/template-parameter.md
