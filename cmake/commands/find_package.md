@@ -1,8 +1,8 @@
 # cmake-commands(7) : find_package
 
-설치된 외부 package를 찾아 설정들을 로드한다. 보통 Find<PackageName>.cmake 파일을 제공해주는 외부 라이브러리들을 찾을 때 사용할 수 있다.
+설치된 외부 package를 찾아 설정들을 로드한다. 보통 Find\<PackageName\>.cmake 파일을 제공해주는 외부 라이브러리들을 찾을 때 사용할 수 있다.
 
-Linux에서는 /usr/local/lib에 라이브러리가 설치되어 있으면 package를 찾을 수 있다. 불행하게도 Windows는 기본 검색 경로는 존재하지 않는다. 다만 CMake 3.12부터 도입된 CMP0074 정책을 적용한 후 환경변수 %<PackageName>_ROOT% 를 설치된 경로로 설정해두면 package를 찾을 수 있다.
+Linux에서는 /usr/local/lib에 라이브러리가 설치되어 있으면 package를 찾을 수 있다. 불행하게도 Windows는 기본 검색 경로는 존재하지 않는다. 다만 CMake 3.12부터 도입된 CMP0074 정책을 적용한 후 환경변수 %\<PackageName\>_ROOT% 를 설치된 경로로 설정해두면 package를 찾을 수 있다.
 
 ## Examples
 
