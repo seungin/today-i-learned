@@ -7,7 +7,7 @@ cmake를 이용할 때 Boost 라이브러리를 사용하는 방법을 설명한
 
 ## Examples
 
-GoogleTest를 사용하는 예제를 보면 아래와 같다.
+Boost를 사용하는 예제를 보면 아래와 같다.
 
 ```cmake
 # external/boost/CMakeLists.txt
@@ -41,7 +41,7 @@ endif()
 
 cmake_minimum_required( VERSION 3.15 )
 
-project( BoostTest )
+project( UsingBoost )
 
 add_subdirectory( external/boost )
 
@@ -61,7 +61,7 @@ int main()
 }
 ```
 
-BoostTest.exe 실행 결과는 아래와 같다.
+UsingBoost.exe 실행 결과는 아래와 같다.
 
 > wait for 1 second  
 > timeout!  
