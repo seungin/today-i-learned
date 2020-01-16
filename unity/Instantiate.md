@@ -1,4 +1,4 @@
-# Instantiation
+# Instantiate
 
 유니티에서 씬 상에 실시간으로 게임 오브젝트를 생성하는 것을 인스턴스화라고 부른다.
 
