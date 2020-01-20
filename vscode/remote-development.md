@@ -4,6 +4,7 @@
 
 - [C++Now 2019, C++ Development with Visual Studio Code](https://youtu.be/knghWKWQmxg)
 - [원격서버 vscode로 연결해서 작업하기](https://evols-atirev.tistory.com/28)
+- [Remote Development using SSH](https://code.visualstudio.com/docs/remote/ssh)
 
 ## More Information
 
