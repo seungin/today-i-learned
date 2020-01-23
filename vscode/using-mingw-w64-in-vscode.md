@@ -46,7 +46,7 @@ VS Code를 이용하여 C++ 개발을 하는데 필요한 3가지 파일이 있�
 - launch.json
 - c_cpp_properties.json
 
-### Configure(1) : tasks.json
+### `tasks.json` Build main.cpp
 
 - **_Terminal > Configure Default Build Task_** 를 선택한다.
 - **_C/C++: g++.exe build active file_** 을 선택한다.
@@ -79,10 +79,68 @@ VS Code를 이용하여 C++ 개발을 하는데 필요한 3가지 파일이 있�
 - 빌드가 완료되면 Terminal을 하나 더 열어서 실행해볼 수 있다.
 
 ```bat
-PS C:\Users\seungin\Workspace\VisualStudioCode> .\a.exe
+PS C:\Users\seungin\Workspace\VisualStudioCode> .\main.exe
 Hello C++ World from VS Code and the C++ extension!
 ```
 
-### Configure(2) : launch.json
+### `launch.json` Debug main.cpp
 
-...
+- **_Debug > Add Configuration_** 을 선택한다.
+- **_C++ (GDB/LLDB)_** 를 선택한다.
+- 그러면 아래와 같은 파일이 자동 생성된다.
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "g++.exe build and debug active file",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "C:\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin\\gdb.exe",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "g++.exe build active file"
+    }
+  ]
+}
+```
+
+- main.cpp 파일에 원하는 위치에 break point를 걸어둔다. 단축키 `F9`를 이용할 수 있다.
+- **_Debug > Start Debugging_** 을 선택하여 디버깅을 시작한다. 단축키 `F5`를 이용할 수 있다.
+- `Ctrl + Shift + D` 단축키를 이용하여 Debug View로 이동하여 디버깅을 진행할 수 있다.
+
+### `c_cpp_properties.json` Change settings such as compiler, include paths, C++ standard, ...
+
+- **_C/C++: Edit Configurations (UI)_** 을 선택한다.
+- `.vscode\c_cpp_properties.json` 파일을 직접 수정할 수도 있다.
+- 생성된 파일 내용은 아래와 같다.
+
+```json
+{
+  "configurations": [
+    {
+      "name": "Win32",
+      "includePath": ["${workspaceFolder}/**"],
+      "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
+      "compilerPath": "C:\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin\\gcc.exe",
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "clang-x86"
+    }
+  ],
+  "version": 4
+}
+```
