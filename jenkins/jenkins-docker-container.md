@@ -2,23 +2,31 @@
 
 docker container 안에서 jenkins를 실행하는 방법을 설명한다.
 
-## Examples
+## Prerequisites
 
-- jenkins image를 pull하고 container를 실행한다.
-- 종료가 되더라도 변경된 내용이 지워지지 않도록 하기 위해 volume을 설정한다.
-- Windows에서 정상적으로 volume이 연결되려면 Shared Drives 설정을 해야한다.
-  - 작업표시줄 우측 Docker Desktop 트레이 아이콘에 마우스 우클릭
-  - **_settings_** 를 선택하고 **_Shared Drvies_** 탭을 선택
-  - 원하는 드라이브(아래 예시에서는 C:)를 선택하고 **_Apply_** 버튼을 누름
-  - Login ID/Password를 입력하면 설정 완료
+`Shared Drives` 설정:
 
-> jenkins official docker image는 `jenkins/jenkins` 이다.  
-> 다른 이미지를 받는 경우 최신 버전이 아니므로 설치가 실패하는 등 문제가 발생할 수 있으므로 주의해야 한다.  
-> [Official Jenkins image to use from Docker Hub](https://jenkins.io/blog/2018/12/10/the-official-Docker-image/)를 참고하자.  
+    작업표시줄 우측 Docker Desktop 트레이 아이콘 마우스 우클릭 > settings > Shared Drives
+
+원하는 드라이브(예를 들면 C:)를 선택하고 Apply 버튼을 누른 후 Login ID/Password를 입력하면 설정이 완료된다.
+
+## Installing Jenkins
+
+아래 내용은 [Installing Jenkins](https://jenkins.io/doc/book/installing/#setup-wizard)를 참고하여 요약한 것이므로 상세 내용은 링크를 참고한다.
+
+On Windows:
+
+1. bridge network를 하나 만든다. `jenkins`
+2. TLS 인증 및 jenkins 데이터 저장을 위한 docker volume을 만든다. `jenkins-docker-certs` `jenkins-data`
+3. jenkins node 안에서 docker 명령을 실행하기 위한 container를 만든다. `jenkins-docker`
+4. jenkins blueocean container를 실행한다. `jenkins-blueocean`
 
 ```sh
-$ docker pull jenkins/jenkins
-$ docker run --name jenkins -p 8080:8080 -v %USERPROFILE%\var\jenkins_home:/var/jenkins_home jenkins/jenkins
+$ docker network create jenkins
+$ docker volume create jenkins-docker-certs
+$ docker volume create jenkins-data
+$ docker container run --name jenkins-docker --rm --detach --privileged --network jenkins --network-alias docker --env DOCKER_TLS_CERTDIR=/certs --volume jenkins-docker-certs:/certs/client --volume jenkins-data:/var/jenkins_home docker:dind
+$ docker container run --name jenkins-blueocean --rm --detach --network jenkins --env DOCKER_HOST=tcp://docker:2376 --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 --volume jenkins-data:/var/jenkins_home --volume jenkins-docker-certs:/certs/client:ro --publish 8080:8080 --publish 50000:50000 jenkinsci/blueocean
 ```
 
-컨테이너가 실행되면 웹브라우저에서 `localhost:8080` 에 접속한다. 접속한 후 Jenkins 초기 설정을 진행하면 된다.
+완료되면 웹브라우저에서 `localhost:8080` 에 접속한다. 접속한 후 Jenkins 초기 설정을 진행하면 된다. [Post-installation setup wizard](https://jenkins.io/doc/book/installing/#setup-wizard)를 참고한다.
