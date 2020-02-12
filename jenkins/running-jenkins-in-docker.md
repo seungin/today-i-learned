@@ -1,14 +1,6 @@
-# Run Jenkins on Docker Container
+# Running Jenkins in Docker
 
-docker container 안에서 jenkins를 실행하는 방법을 설명한다.
-
-## Prerequisites
-
-`Shared Drives` 설정:
-
-    작업표시줄 우측 Docker Desktop 트레이 아이콘 마우스 우클릭 > settings > Shared Drives
-
-원하는 드라이브(예를 들면 C:)를 선택하고 Apply 버튼을 누른 후 Login ID/Password를 입력하면 설정이 완료된다.
+docker container를 이용하여 jenkins를 실행하는 방법을 설명한다.
 
 ## Installing Jenkins
 
